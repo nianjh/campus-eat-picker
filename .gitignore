@@ -8,7 +8,7 @@ frontend/node_modules/
 target/
 *.class
 *.jar
-!lib/*.jar
+!**/lib/*.jar
 
 # ─── IDE ───
 .idea/
