@@ -1,0 +1,33 @@
+# =============================================
+# 校园"今天吃什么" —— Spring Boot 应用配置
+# 生产环境使用 application-prod.yml
+# =============================================
+spring:
+  datasource:
+    url: jdbc:dm://localhost:5236/DAMENG?useUnicode=true&characterEncoding=UTF-8&compatibleMode=mysql
+    username: SYSDBA
+    password: "Ajiahao987*"
+    driver-class-name: dm.jdbc.driver.DmDriver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-timeout: 10000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1   # 达梦连接活性自检心跳，规避连接池假死
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto              # 全局默认 AUTO；实体类用 @TableId(type=IdType.AUTO) 覆盖
+      table-prefix: T_           # 自动匹配 T_ 前缀表
+  mapper-locations: classpath*:/mapper/**/*.xml
+
+# JWT 配置（生产环境应从配置中心拉取）
+jwt:
+  secret: WhatToEatWheel2024CampusSecretKey_HopeYouEatWell
+  expire-days: 7

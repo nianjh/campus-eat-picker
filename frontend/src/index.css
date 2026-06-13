@@ -1,0 +1,139 @@
+/* ═══════════════════════════════════════════════════════
+   Neo-Brutalist Global Styles
+   ═══════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-brutal-bg text-brutal-fg;
+    margin: 0;
+    line-height: 1.5;
+  }
+  ::selection { @apply bg-brutal-primary text-white; }
+
+  /* raw scrollbar */
+  ::-webkit-scrollbar          { width: 8px; }
+  ::-webkit-scrollbar-track    { background: #111111; }
+  ::-webkit-scrollbar-thumb    { background: #FF3366; }
+}
+
+@layer components {
+  /* ═══════════════════════════════════════════
+     BrutalButton
+     variants: primary | secondary | danger
+     shadow shift: 4px→2px on click
+     ═══════════════════════════════════════════ */
+  .brutal-btn {
+    @apply inline-flex items-center justify-center
+           font-bold uppercase tracking-[0.04em]
+           border-3 border-brutal-fg
+           shadow-brutal
+           cursor-pointer select-none
+           transition-all duration-[120ms] ease-out
+           active:shadow-brutal-sm
+           active:translate-x-[2px] active:translate-y-[2px];
+  }
+  .brutal-btn-primary {
+    @apply brutal-btn bg-brutal-primary text-white border-brutal-fg;
+  }
+  .brutal-btn-primary:hover { @apply bg-brutal-primary-hover; }
+
+  .brutal-btn-secondary {
+    @apply brutal-btn bg-brutal-secondary text-brutal-fg border-brutal-fg;
+  }
+  .brutal-btn-secondary:hover { @apply bg-brutal-secondary-hover; }
+
+  .brutal-btn-danger {
+    @apply brutal-btn bg-brutal-danger text-white border-brutal-fg;
+  }
+  .brutal-btn-danger:hover { @apply bg-brutal-danger-hover; }
+
+  .brutal-btn-ghost {
+    @apply brutal-btn bg-white text-brutal-fg border-brutal-fg;
+  }
+  .brutal-btn:disabled {
+    @apply opacity-40 cursor-not-allowed active:shadow-brutal active:translate-x-0 active:translate-y-0;
+  }
+
+  /* Mobile touch target: minimum 44px for buttons */
+  @media (max-width: 639px) {
+    .brutal-btn { min-height: 44px; }
+    .brutal-badge { min-height: 32px; display: inline-flex; align-items: center; }
+    input.brutal-input, textarea.brutal-input { font-size: 16px; } /* prevent iOS zoom */
+  }
+
+  /* ═══════════════════════════════════════════
+     BrutalCard
+     no radius | thick border | accent top strip
+     ═══════════════════════════════════════════ */
+  .brutal-card {
+    @apply bg-white border-3 border-brutal-fg shadow-brutal overflow-hidden;
+  }
+  .brutal-card-strip-primary { @apply brutal-card; border-top: 6px solid theme('colors.brutal.primary'); }
+  .brutal-card-strip-secondary { @apply brutal-card; border-top: 6px solid theme('colors.brutal.secondary'); }
+  .brutal-card-strip-danger { @apply brutal-card; border-top: 6px solid theme('colors.brutal.danger'); }
+  .brutal-card-strip-blue { @apply brutal-card; border-top: 6px solid theme('colors.brutal.blue'); }
+  .brutal-card-strip-green { @apply brutal-card; border-top: 6px solid theme('colors.brutal.green'); }
+
+  /* ═══════════════════════════════════════════
+     BrutalInput
+     thick bottom-border only | monospace placeholder
+     ═══════════════════════════════════════════ */
+  .brutal-input {
+    @apply w-full px-4 py-3 font-mono text-brutal-fg bg-white
+           border-b-3 border-brutal-fg
+           placeholder:font-mono placeholder:text-brutal-muted
+           focus:outline-none focus:border-b-brutal-primary
+           transition-colors duration-150;
+  }
+
+  /* ═══════════════════════════════════════════
+     BrutalBadge
+     inline-block | uppercase | small | colored bg
+     ═══════════════════════════════════════════ */
+  .brutal-badge {
+    @apply inline-block px-2.5 py-1 font-bold uppercase tracking-[0.06em]
+           border-2 border-brutal-fg shadow-brutal-sm;
+  }
+  .brutal-badge-red    { @apply brutal-badge bg-brutal-primary text-white; }
+  .brutal-badge-yellow { @apply brutal-badge bg-brutal-secondary text-brutal-fg; }
+  .brutal-badge-blue   { @apply brutal-badge bg-brutal-blue text-white; }
+  .brutal-badge-green  { @apply brutal-badge bg-brutal-green text-brutal-fg; }
+  .brutal-badge-purple { @apply brutal-badge bg-brutal-purple text-white; }
+  .brutal-badge-dark   { @apply brutal-badge bg-brutal-fg text-white; }
+
+  /* ═══════════════════════════════════════════
+     BrutalModal
+     centered | thick border | solid overlay (no blur)
+     ═══════════════════════════════════════════ */
+  .brutal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center px-4;
+    background: var(--brutal-overlay);
+  }
+  .brutal-modal {
+    @apply relative w-full max-w-sm bg-white border-4 border-brutal-fg
+           shadow-brutal-lg;
+  }
+
+  /* ═══════════════════════════════════════════
+     Misc
+     ═══════════════════════════════════════════ */
+  .brutal-nav {
+    @apply sticky top-0 z-30 bg-brutal-bg border-b-3 border-brutal-fg;
+  }
+  .brutal-divider {
+    @apply w-full h-[3px] bg-brutal-fg;
+  }
+  /* "pressed" utility for any element */
+  .brutal-pressed {
+    @apply translate-x-[2px] translate-y-[2px] shadow-brutal-sm;
+  }
+}

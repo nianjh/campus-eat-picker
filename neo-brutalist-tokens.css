@@ -1,0 +1,43 @@
+/* ═══════════════════════════════════════════════════════════
+   Neo-Brutalist Design Tokens
+   ─────────────────────────────────────────────────────────
+   Philosophy: Raw. Bold. Unapologetic.
+   No border-radius. Thick borders. Hard 4px shadows.
+   Interactive elements press down (4px→2px shift) on click.
+   Monospace inputs. Solid overlays. High contrast.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Palette ─────────────────────────────── */
+  --brutal-bg:        #FFFDF7;
+  --brutal-fg:        #111111;
+  --brutal-border:    #111111;
+  --brutal-primary:   #FF3366;
+  --brutal-secondary: #FFD700;
+  --brutal-danger:    #FF4444;
+  --brutal-blue:      #0066FF;
+  --brutal-green:     #00CC66;
+  --brutal-purple:    #8833FF;
+  --brutal-orange:    #FF6600;
+  --brutal-muted:     #888888;
+  --brutal-overlay:   rgba(17, 17, 17, 0.75);
+
+  /* ── Shadows ─────────────────────────────── */
+  --brutal-shadow:       4px 4px 0 #111111;
+  --brutal-shadow-sm:    2px 2px 0 #111111;
+  --brutal-shadow-lg:    6px 6px 0 #111111;
+  --brutal-shadow-primary: 4px 4px 0 #FF3366;
+  --brutal-shadow-secondary: 4px 4px 0 #FFD700;
+  --brutal-shadow-danger: 4px 4px 0 #FF4444;
+
+  /* ── Borders ─────────────────────────────── */
+  --brutal-border-width: 3px;
+  --brutal-border-thick: 4px;
+
+  /* ── Typography ──────────────────────────── */
+  --brutal-font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --brutal-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* ── Animation ───────────────────────────── */
+  --brutal-transition: 150ms ease-out;
+}

@@ -1,0 +1,34 @@
+# ─── Node / Frontend ───
+node_modules/
+frontend/dist/
+frontend/node_modules/
+.vite/
+
+# ─── Java / Maven ───
+target/
+*.class
+*.jar
+!lib/*.jar
+
+# ─── IDE ───
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# ─── 达梦数据库 ───
+dm8_data/
+dm8_logs/
+dm8-init/dm8_data/
+
+# ─── OS ───
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Env ───
+.env
+.env.local
+*.log
